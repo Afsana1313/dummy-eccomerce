@@ -4,28 +4,50 @@ import { baseUrl } from './static/baseUrl';
 import axios from 'axios';
 import ProductContainer from './components/ProductContainer';
 import SidePanel from './components/SidePanel';
+import { GetProp, GetCartProp } from './type/type';
+import CartDisplay from './components/CartDisplay';
+import WholeCart from './components/WholeCart';
+// import apiData from './static/data'
 export const ThemeContext = createContext<any>(null);
+
 function App() {
-  const [cart, setCart] = useState([])
-  const [data, setData] = useState([])
+  const [cart, setCart] = useState([{}] as GetCartProp[])
+  const [data, setData] = useState([{}] as GetProp[])
+  const [isCartOpen, setCartOpen] = useState(false)
+  const [isSidePanelOpen, setSidePanelOpen] = useState(false)
+  const [totalItem, setTotalItem] = useState<number>(0)
+  const [totalValue, setTotalValue] = useState<number>(0)
+
   useEffect(() => {
-      // fetch(`${baseUrl}`)
-      //   .then(res => res.json())
-      //   .then (res => console.log(res))
-    
     async function CallingApi() {
       const res = await axios.get(`${baseUrl}`)
-      console.log(res.data)
-      setData(res.data)
+      const newData = res.data.filter((i: GetProp) => i.price !== "0.0")
+      setData(newData)
     }
+    //setData(apiData.json())
     CallingApi();
-  },[])
+  }, [])
+  const value = {
+    data,
+    cart,
+    setCart,
+    isCartOpen,
+    setCartOpen,
+    isSidePanelOpen,
+    setSidePanelOpen,
+    totalItem,
+    setTotalItem,
+    totalValue,
+    setTotalValue
+  }
   return (
-    <ThemeContext.Provider value={{data,cart, setCart}}>
+    <ThemeContext.Provider value={value}>
           <div className="App">
             <SidePanel />
             <ProductContainer
-            />
+          />
+          <CartDisplay />
+          <WholeCart />
         </div>
     </ThemeContext.Provider>
   );

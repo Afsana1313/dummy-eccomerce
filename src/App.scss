@@ -3,4 +3,10 @@
   width: 800px;
   margin: 0 auto;
 }
-@import './style/sidepanel.scss'
+h4{
+  padding: 0;
+  margin: 0;
+}
+@import './style/sidepanel.scss';
+@import './style/color.scss';
+@import './style/cart.scss';

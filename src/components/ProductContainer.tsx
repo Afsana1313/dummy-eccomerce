@@ -1,26 +1,14 @@
 import React,{useContext} from 'react'
 import SingleProduct from './SingleProduct'
 import { ThemeContext } from '../App'
-type GetProp = {
-    name: string,
-    id: number,
-    brand: string,
-    price: string,
-    image_link: string,
-    product_link: string,
-    rating: number | null,
-    product_type: string
-    product_api_link: string,
-    api_featured_image: string,
-    product_colours: {
-        hex_value: string,
-    }[],
-
-}
+import {GetProp} from '../type/type'
 function ProductContainer() {
-    const {data} = useContext(ThemeContext)
+    const {data,setCartOpen, isCartOpen} = useContext(ThemeContext)
   return (
-      <div className='product-container'>
+    <div
+      className='product-container'
+      onClick={(e)=> isCartOpen ? setCartOpen(false): null}
+    >
           <div className='product-wrapper'>
               {data?.map((i: GetProp) =>
                  (
@@ -30,6 +18,7 @@ function ProductContainer() {
                     name={i.name}
                     brand={i.brand}
                     price={i.price}
+                    price_sign={i.price_sign}
                     image_link = {i.image_link}
                     product_link = {i.product_link}
                     rating={i.rating}
