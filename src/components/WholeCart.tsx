@@ -5,24 +5,39 @@ import { ThemeContext } from '../App'
 import SingleCartItem from './SingleCartItem'
 import {GetCartProp} from '../type/type'
 function WholeCart() {
-    const {isCartOpen, cart} = useContext(ThemeContext)
+    const {isCartOpen, cart , setCartOpen} = useContext(ThemeContext)
     const style = {
         transform: isCartOpen ? "translateX(0)" : "translateX(100%)",
         transition: 'all 0.7s ease-in'
-    }
+  }
+  const cartStyle = {
+    display:  isCartOpen ? "block" : "none"
+  }
   return (
-    <div className='cart-wrapper' style={style}>
+    <>
       <div className='cart-container' style={style}>
         <CartHeader />
-         {cart?.map((i: GetCartProp) => (
-           <SingleCartItem
-             key={i.id}
-             item={i}
-          />
-        ))} 
-            <CartFooter />
-    </div>
-    </div>
+        <div className='cart-wrapper'>
+          <div className='mini-cart-product-container'>
+            {cart?.map((i: GetCartProp) => (
+              <SingleCartItem
+                key={i.id}
+                item={i}
+              />
+            ))}
+          </div>
+           <CartFooter />
+        </div>
+        
+       
+      </div>
+      <div
+        className='cart-bg'
+        style={cartStyle}
+        onClick={(e)=> isCartOpen ? setCartOpen(false): null}
+      >
+      </div>
+    </>
   )
 }
 

@@ -3,11 +3,10 @@ import SingleProduct from './SingleProduct'
 import { ThemeContext } from '../App'
 import {GetProp} from '../type/type'
 function ProductContainer() {
-    const {data,setCartOpen, isCartOpen} = useContext(ThemeContext)
+    const {data} = useContext(ThemeContext)
   return (
     <div
       className='product-container'
-      onClick={(e)=> isCartOpen ? setCartOpen(false): null}
     >
           <div className='product-wrapper'>
               {data?.map((i: GetProp) =>
