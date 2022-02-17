@@ -1,6 +1,7 @@
 import { GetCartProp, GetProp } from '../type/type'
-import { useState, useContext, useEffect } from 'react'
-import { ThemeContext } from '../App'
+import { useState, useEffect } from 'react'
+import { LoadingOutlined } from '@ant-design/icons'
+import useAppContext from '../context/useAppContext';
 
 function SingleProduct(item: GetProp) {
   const {
@@ -11,13 +12,17 @@ function SingleProduct(item: GetProp) {
     totalValue,
     setTotalValue,
     setCartOpen
-  } = useContext(ThemeContext);
+  } = useAppContext();
   useEffect(() => {
       !!cart?.find((i:GetCartProp)=> i.id === item.id) ? setIsInCart(true) : setIsInCart(false)
-  },[cart])
+  }, [cart])
+  const [loaderVisible, setLoaderVisible] = useState(false)
   const [isInCart, setIsInCart] = useState(false)
   const btnText = isInCart ? 'VIEW CART' : 'ADD TO CART'
-
+  let iconStyle = {
+    marginRight: '10px',
+    display: loaderVisible ? 'inline-block' : 'none'
+  }
   const handleAddToCart = (item: GetProp) => {
     const cartItem = {
       ...item,
@@ -25,12 +30,21 @@ function SingleProduct(item: GetProp) {
       totalValue: parseFloat(item.price),
       added: true
     }
-    totalItem === 0 ? setCart([cartItem]) :setCart([...cart, cartItem]);
+    setLoaderVisible(true)
+    setTimeout(() => {
+      setLoaderVisible(false) 
+    }, 2000)
+    !!loaderVisible ? setTimeout(() => {
+      setIsInCart(true)
+      console.log(isInCart)
+    }, 2000) : void
+    
+    totalItem === 0 ? setCart([cartItem]) : setCart([...cart, cartItem]);
     setTotalItem(totalItem + 1)
     var value = totalValue as number + parseFloat(item.price as string) as number
     value = parseFloat(value.toPrecision(4) as string) as number;
     setTotalValue(value)
-    setIsInCart(true)
+    
   }
   
   return (
@@ -48,7 +62,12 @@ function SingleProduct(item: GetProp) {
       <button
         className='cart-btn'
         onClick={(e)=>  isInCart ? setCartOpen(true) : handleAddToCart(item)}
-      >{btnText}</button>
+      >
+         <LoadingOutlined
+          style={iconStyle}
+          className='cart-loader-icon'
+        /> 
+        {btnText}</button>
          
     </div>
   )

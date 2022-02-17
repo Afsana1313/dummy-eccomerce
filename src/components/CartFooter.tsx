@@ -1,7 +1,6 @@
-import {useContext} from 'react'
-import {ThemeContext} from '../App'
+import useAppContext from "../context/useAppContext"
 function CartFooter() {
-    const {totalValue} = useContext(ThemeContext)
+    const {totalValue} = useAppContext()
   return (
       <div className='cart-footer'>
           <div className='cart-footer-text'>

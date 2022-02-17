@@ -7,6 +7,7 @@ import SidePanel from './components/SidePanel';
 import { GetProp, GetCartProp } from './type/type';
 import CartDisplay from './components/CartDisplay';
 import WholeCart from './components/WholeCart';
+import Loader from './components/Loader';
 // import apiData from './static/data'
 export const ThemeContext = createContext<any>(null);
 
@@ -17,12 +18,15 @@ function App() {
   const [isSidePanelOpen, setSidePanelOpen] = useState(false)
   const [totalItem, setTotalItem] = useState<number>(0)
   const [totalValue, setTotalValue] = useState<number>(0)
+  const [dataLoaded, setDataLoaded] = useState(false)
 
   useEffect(() => {
     async function CallingApi() {
       const res = await axios.get(`${baseUrl}`)
       const newData = res.data.filter((i: GetProp) => i.price !== "0.0")
-      setData(newData)
+      
+      await setData(newData)
+      setDataLoaded(true)
     }
     //setData(apiData.json())
     CallingApi();
@@ -44,8 +48,7 @@ function App() {
     <ThemeContext.Provider value={value}>
           <div className="App">
             <SidePanel />
-            <ProductContainer
-          />
+            {dataLoaded ? <ProductContainer/> : <Loader />}
           <CartDisplay />
           <WholeCart />
         </div>

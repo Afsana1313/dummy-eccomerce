@@ -26,6 +26,10 @@
     font-weight: bold;
     width: 100%;   
 }
+.cart-loader-icon{
+    position: absolute;
+    right: 30px;
+}
 .cart-container{
     position: fixed;
     top: 0;
@@ -73,6 +77,9 @@
          padding-bottom: 450px;
     }
 }
+.single-product-text{
+    height: 55px;
+}
 .single-cart-item{
     margin: 5px;
     padding: 5px;
@@ -89,6 +96,7 @@
             overflow: hidden;
             object-fit: cover;
         }
+        
     }
     .cart-text{
     margin: 0 10px;    

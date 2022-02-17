@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  width: 800px;
+  width: 850px;
   margin: 0 auto;
 }
 h4{
@@ -10,3 +10,5 @@ h4{
 @import './style/sidepanel.scss';
 @import './style/color.scss';
 @import './style/cart.scss';
+@import './style/product.scss';
+@import './style/loader.scss';

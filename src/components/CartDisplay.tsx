@@ -1,11 +1,10 @@
-import {useContext} from 'react'
 import {ShoppingCartOutlined} from '@ant-design/icons'
-import { ThemeContext } from '../App'
+import useAppContext from '../context/useAppContext'
 function CartDisplay() {
   const {totalValue,
     totalItem,
     setCartOpen
-  } = useContext(ThemeContext)
+  } = useAppContext()
   return (
     <div
       className='cart-display'

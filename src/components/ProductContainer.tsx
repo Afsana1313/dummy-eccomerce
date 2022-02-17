@@ -1,9 +1,8 @@
-import React,{useContext} from 'react'
 import SingleProduct from './SingleProduct'
-import { ThemeContext } from '../App'
-import {GetProp} from '../type/type'
+import { GetProp } from '../type/type'
+import useAppContext from '../context/useAppContext'
 function ProductContainer() {
-    const {data} = useContext(ThemeContext)
+    const {data} = useAppContext()
   return (
     <div
       className='product-container'

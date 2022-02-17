@@ -1,9 +1,7 @@
-import {useContext} from 'react'
 import { CloseOutlined } from '@ant-design/icons'
-import { ThemeContext } from '../App'
-
+import useAppContext from '../context/useAppContext'
 function CartHeader() {
-  const {setCartOpen} = useContext(ThemeContext)
+  const {setCartOpen} = useAppContext()
   return (
       <div className='cart-header'>
           <CloseOutlined

@@ -1,12 +1,11 @@
-import {useContext, useState} from 'react'
+import { useState} from 'react'
 import { GetCartProp } from '../type/type'
 import { DeleteOutlined } from '@ant-design/icons'
-import {ThemeContext} from '../App'
+import useAppContext from '../context/useAppContext'
 type Props = {
-    key: number,
     item: GetCartProp
 }
-function SingleCartItem({ key, item }: Props) {
+function SingleCartItem({ item }: Props) {
     const [quantity, setQuantity] = useState<number>(0)
     const { cart,
         setCart,
@@ -14,7 +13,7 @@ function SingleCartItem({ key, item }: Props) {
         setTotalItem,
         totalValue,
         setTotalValue
-    } = useContext(ThemeContext)
+    } = useAppContext()
     const handleDelete = (id: number) => {
         setCart(cart?.filter((i: GetCartProp) => i.id !== id))
         setTotalItem(totalItem - 1)
@@ -30,8 +29,6 @@ function SingleCartItem({ key, item }: Props) {
             if (i.id === item.id) {
                 item.quantity = parseInt(e.target.value);
                 item.totalValue = item.quantity * parseFloat(item.price);
-                //newTotalValue = newTotalValue as number - parseFloat(item.price as string) as number + item.totalValue as number;
-                //console.log(newTotalValue)
             }
             return item;
         })
@@ -65,9 +62,10 @@ function SingleCartItem({ key, item }: Props) {
                       name="cart-item-quantity"
                       id="cart-item-quantity"
                       value={quantity}
-                      onChange={(e) => handleQuantity(e,item)}
+                      onChange={(e) => handleQuantity(e, item)}
+                      defaultValue='1'
                   >
-                        <option value="1" selected>1</option>
+                        <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>

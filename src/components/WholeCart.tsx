@@ -1,11 +1,11 @@
-import {useContext} from 'react'
+import React from 'react'
 import CartHeader from './CartHeader'
 import CartFooter from './CartFooter'
-import { ThemeContext } from '../App'
 import SingleCartItem from './SingleCartItem'
-import {GetCartProp} from '../type/type'
+import { GetCartProp } from '../type/type'
+import useAppContext from '../context/useAppContext'
 function WholeCart() {
-    const {isCartOpen, cart , setCartOpen} = useContext(ThemeContext)
+    const {isCartOpen, cart , setCartOpen} = useAppContext()
     const style = {
         transform: isCartOpen ? "translateX(0)" : "translateX(100%)",
         transition: 'all 0.7s ease-in'
@@ -20,10 +20,11 @@ function WholeCart() {
         <div className='cart-wrapper'>
           <div className='mini-cart-product-container'>
             {cart?.map((i: GetCartProp) => (
-              <SingleCartItem
-                key={i.id}
-                item={i}
-              />
+              <React.Fragment key={i.id}>
+                  <SingleCartItem
+                    item={i}
+                  />
+              </React.Fragment>
             ))}
           </div>
            <CartFooter />
