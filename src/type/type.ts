@@ -16,7 +16,7 @@ export type GetProp = {
 
 }
 export type GetCartProp = {
-     name: string,
+    name: string,
     id: number,
     brand: string,
     price: string,
@@ -31,5 +31,6 @@ export type GetCartProp = {
         hex_value: string,
     }[],
     quantity: number,
-    added: boolean
+    added: boolean,
+    totalValue: number
 }

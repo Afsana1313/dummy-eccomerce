@@ -1,6 +1,7 @@
-import { GetProp } from '../type/type'
-import { useState, useContext } from 'react'
-import {ThemeContext} from '../App'
+import { GetCartProp, GetProp } from '../type/type'
+import { useState, useContext, useEffect } from 'react'
+import { ThemeContext } from '../App'
+
 function SingleProduct(item: GetProp) {
   const {
     setCart,
@@ -11,12 +12,17 @@ function SingleProduct(item: GetProp) {
     setTotalValue,
     setCartOpen
   } = useContext(ThemeContext);
+  useEffect(() => {
+      !!cart?.find((i:GetCartProp)=> i.id === item.id) ? setIsInCart(true) : setIsInCart(false)
+  },[cart])
   const [isInCart, setIsInCart] = useState(false)
   const btnText = isInCart ? 'VIEW CART' : 'ADD TO CART'
+
   const handleAddToCart = (item: GetProp) => {
     const cartItem = {
       ...item,
       quantity: 1,
+      totalValue: parseFloat(item.price),
       added: true
     }
     totalItem === 0 ? setCart([cartItem]) :setCart([...cart, cartItem]);
