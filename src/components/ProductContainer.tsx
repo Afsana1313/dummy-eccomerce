@@ -1,6 +1,6 @@
 import SingleProduct from './SingleProduct'
-import { GetProp } from '../type/type'
-import useAppContext from '../context/useAppContext'
+import { GetProp } from 'type/type'
+import useAppContext from 'context/useAppContext'
 function ProductContainer() {
     const {data} = useAppContext()
   return (

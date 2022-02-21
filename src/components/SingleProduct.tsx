@@ -1,7 +1,7 @@
-import { GetCartProp, GetProp } from '../type/type'
+import { GetCartProp, GetProp } from 'type/type'
 import { useState, useEffect } from 'react'
 import { LoadingOutlined } from '@ant-design/icons'
-import useAppContext from '../context/useAppContext';
+import useAppContext from 'context/useAppContext';
 
 function SingleProduct(item: GetProp) {
   const {

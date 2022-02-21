@@ -1,4 +1,8 @@
 @import './color.scss';
+.product-container{
+  width: 850px;
+  margin: 0 auto;
+}
 .product-wrapper{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

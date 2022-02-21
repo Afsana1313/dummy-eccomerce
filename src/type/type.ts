@@ -34,3 +34,6 @@ export type GetCartProp = {
     added: boolean,
     totalValue: number
 }
+type GetSearchParamProps = {
+    
+}
