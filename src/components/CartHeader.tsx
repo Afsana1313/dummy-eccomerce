@@ -1,5 +1,5 @@
 import { CloseOutlined } from '@ant-design/icons'
-import useAppContext from '../context/useAppContext'
+import useAppContext from '../customehook/useAppContext'
 function CartHeader() {
   const {setCartOpen} = useAppContext()
   return (

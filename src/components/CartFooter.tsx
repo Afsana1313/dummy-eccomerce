@@ -1,4 +1,4 @@
-import useAppContext from "../context/useAppContext"
+import useAppContext from "../customehook/useAppContext"
 function CartFooter() {
     const {totalValue} = useAppContext()
   return (

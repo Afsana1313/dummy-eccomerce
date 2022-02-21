@@ -8,6 +8,7 @@ import { GetProp, GetCartProp } from 'type/type';
 import CartDisplay from 'components/CartDisplay';
 import WholeCart from 'components/WholeCart';
 import Loader from 'components/Loader';
+import useFetch from 'customehook/useFetch';
 // import apiData from './static/data'
 export const ThemeContext = createContext<any>(null);
 
@@ -20,17 +21,9 @@ function App() {
   const [totalValue, setTotalValue] = useState<number>(0)
   const [dataLoaded, setDataLoaded] = useState(false)
   const [searchParam, setSearchParam] = useState()
-
+  //const {isLoading, data, isError} = useFetch(`${baseUrl}`,'GET')
   useEffect(() => {
-    async function CallingApi() {
-      const res = await axios.get(`${baseUrl}`)
-      const newData = res.data.filter((i: GetProp) => i.price !== "0.0")
-      
-      await setData(newData)
-      setDataLoaded(true)
-    }
-    //setData(apiData.json())
-    CallingApi();
+    
   }, [])
   const value = {
     data,

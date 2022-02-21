@@ -1,7 +1,7 @@
 import { useState} from 'react'
 import { GetCartProp } from 'type/type'
 import { DeleteOutlined } from '@ant-design/icons'
-import useAppContext from 'context/useAppContext'
+import useAppContext from 'customehook/useAppContext'
 type Props = {
     item: GetCartProp
 }

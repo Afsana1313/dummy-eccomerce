@@ -3,7 +3,7 @@ import CartHeader from './CartHeader'
 import CartFooter from './CartFooter'
 import SingleCartItem from './SingleCartItem'
 import { GetCartProp } from '../type/type'
-import useAppContext from '../context/useAppContext'
+import useAppContext from '../customehook/useAppContext'
 function WholeCart() {
     const {isCartOpen, cart , setCartOpen} = useAppContext()
     const style = {
