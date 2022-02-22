@@ -1,37 +1,27 @@
 import {useEffect, useState} from 'react'
-import {GetProp} from 'type/type'
-type GetUseFetchType = {
-    url: string,
-    func: (d: GetProp) => void
-}
-const useFetch = ({url, func} : GetUseFetchType) => {
-    
+import { GetProp } from 'type/type'
+import useAppContext from './useAppContext'
+import axios from 'axios'
+
+const useFetch = (url: string) => {
+    const { setData } = useAppContext();
+   // const [resData, setResData] = useState([{}] as GetProp[])
     const [isLoading, setIsLoading] = useState(false);
-    const [isError, setIsError] = useState(false);
+    //const [isError, setIsError] = useState('');
     useEffect(() => {
-        if (!url) {return;
-        }
-        setIsLoading(true);
-      async function CallingApi() {
-          const res = await fetch(url, {
-              method: 'GET',
-              headers: {
-                  'Content-Type': 'application/json'
-              }
-          })
+          async function CallingApi() {
+      const res = await axios.get(url)
+      const newData = res.data.filter((i: GetProp) => i.price !== "0.0")
       
-      const resData = await res.json()
-      func(resData)
-      console.log(resData)
-      //const newData = res.data.filter((i: GetProp) => i.price !== "0.0")
-      
-     // await setData(newData)
+      await setData(newData)
+      console.log(newData)
      // setDataLoaded(true)
+      setIsLoading(true)
     }
-    //setData(apiData.json())
+        
     CallingApi();
-    },[])
-  //return {isLoading, resData,isError}
+    },[url])
+  return {isLoading}
 }
 
 export default useFetch

@@ -19,7 +19,7 @@ function WholeCart() {
         <CartHeader />
         <div className='cart-wrapper'>
           <div className='mini-cart-product-container'>
-            {cart?.map((i: GetCartProp) => (
+            {cart?.length > 0 && cart?.map((i: GetCartProp) => (
               <React.Fragment key={i.id}>
                   <SingleCartItem
                     item={i}

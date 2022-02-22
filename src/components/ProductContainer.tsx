@@ -8,7 +8,7 @@ function ProductContainer() {
       className='product-container'
     >
           <div className='product-wrapper'>
-              {data?.map((i: GetProp) =>
+              {data.length> 0 && data?.map((i: GetProp) =>
                  (
                   <SingleProduct
                     key={i.id}

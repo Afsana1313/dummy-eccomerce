@@ -1,43 +1,49 @@
 import './App.scss';
-import {useEffect, useState, createContext} from 'react'
-//import { baseUrl } from 'static/baseUrl';
-//import axios from 'axios';
+import {useState, createContext, useEffect} from 'react'
+import { baseUrl } from 'static/baseUrl';
+import axios from 'axios';
 import ProductContainer from 'components/ProductContainer';
 import SidePanel from 'components/SidePanel';
 import { GetProp, GetCartProp } from 'type/type';
 import CartDisplay from 'components/CartDisplay';
 import WholeCart from 'components/WholeCart';
 import Loader from 'components/Loader';
-//import useFetch from 'customehook/useFetch';
+import useFetch from 'customehook/useFetch';
 // import apiData from './static/data'
 export const ThemeContext = createContext<any>(null);
 
 function App() {
-  const [cart, setCart] = useState([{}] as GetCartProp[])
-  const [data, setData] = useState([{}] as GetProp[])
+  const [cart, setCart] = useState<GetCartProp[] | null>(null)
+  const [data, setData] = useState<GetProp[] | null>(null)
   const [isCartOpen, setCartOpen] = useState(false)
   const [isSidePanelOpen, setSidePanelOpen] = useState(false)
-  const [totalItem, setTotalItem] = useState<number>(0)
   const [totalValue, setTotalValue] = useState<number>(0)
   const [dataLoaded, setDataLoaded] = useState(false)
   //const [searchParam, setSearchParam] = useState()
-  const setDataFunc = (data : GetProp[])=>{
-    setData(data as GetProp[])
-  }
- // const {isLoading, data, isError} = useFetch(`${baseUrl}` , setDataFunc)
-  useEffect(() => {
-    
+  //const { isLoading } = useFetch(`${baseUrl}`)
+    useEffect(() => {
+    async function CallingApi() {
+      const res = await axios.get(`${baseUrl}`)
+      const newData = res.data.filter((i: GetProp) => i.price !== "0.0")
+      
+      await setData(newData)
+      console.log(newData)
+      setDataLoaded(true)
+    //  setDataLoaded(isLoading)
+    }
+    //setData(apiData.json())
+    CallingApi();
   }, [])
+  //setDataLoaded(isLoading);
   const value = {
     data,
+    setData,
     cart,
     setCart,
     isCartOpen,
     setCartOpen,
     isSidePanelOpen,
     setSidePanelOpen,
-    totalItem,
-    setTotalItem,
     totalValue,
     setTotalValue
   }
@@ -47,7 +53,7 @@ function App() {
             <SidePanel />
             {dataLoaded ? <ProductContainer/> : <Loader />}
           <CartDisplay />
-          <WholeCart />
+          <WholeCart /> 
         </div>
     </ThemeContext.Provider>
   );

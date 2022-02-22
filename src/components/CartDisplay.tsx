@@ -2,7 +2,7 @@ import {ShoppingCartOutlined} from '@ant-design/icons'
 import useAppContext from '../customehook/useAppContext'
 function CartDisplay() {
   const {totalValue,
-    totalItem,
+    cart,
     setCartOpen
   } = useAppContext()
   return (
@@ -14,7 +14,7 @@ function CartDisplay() {
             <ShoppingCartOutlined />
       </div>
       <div className='cart-item-number'>
-        {totalItem}{totalItem === 1 ? ' item' : ' items'}
+        {cart?.length}{cart?.length === 1 ? ' item' : ' items'}
       </div>
           <div className='cart-text'>
                   {totalValue}  

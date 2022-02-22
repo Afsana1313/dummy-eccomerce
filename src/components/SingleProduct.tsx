@@ -2,19 +2,19 @@ import { GetCartProp, GetProp } from 'type/type'
 import { useState, useEffect } from 'react'
 import { LoadingOutlined } from '@ant-design/icons'
 import useAppContext from 'customehook/useAppContext';
+//import ReactStars from "react-rating-stars-component";
 
 function SingleProduct(item: GetProp) {
   const {
     setCart,
     cart,
-    setTotalItem,
-    totalItem,
     totalValue,
     setTotalValue,
     setCartOpen
   } = useAppContext();
   useEffect(() => {
-      !!cart?.find((i:GetCartProp)=> i.id === item.id) ? setIsInCart(true) : setIsInCart(false)
+    !!cart?.find((i: GetCartProp) => i.id === item.id) ? setIsInCart(true) : setIsInCart(false)
+   // console.log(cart)
   }, [cart])
   const [loaderVisible, setLoaderVisible] = useState(false)
   const [isInCart, setIsInCart] = useState(false)
@@ -30,17 +30,15 @@ function SingleProduct(item: GetProp) {
       totalValue: parseFloat(item.price),
       added: true
     }
-    setLoaderVisible(true)
-    setTimeout(() => {
-      setLoaderVisible(false) 
-    }, 2000)
-    !!loaderVisible ? setTimeout(() => {
-      setIsInCart(true)
-      console.log(isInCart)
-    }, 2000) : void
-    
-    totalItem === 0 ? setCart([cartItem]) : setCart([...cart, cartItem]);
-    setTotalItem(totalItem + 1)
+    //setLoaderVisible(true)
+    try {
+      cart === null ? setCart([cartItem]) : setCart([...cart, cartItem]);
+    } catch (e) {
+      console.log(e)
+    } finally {
+      
+    }
+    //cart?.length === 0 ? setCart([cartItem]) : setCart([...cart, cartItem]);
     var value = totalValue as number + parseFloat(item.price as string) as number
     value = parseFloat(value.toPrecision(4) as string) as number;
     setTotalValue(value)

@@ -9,14 +9,11 @@ function SingleCartItem({ item }: Props) {
     const [quantity, setQuantity] = useState<number>(0)
     const { cart,
         setCart,
-        totalItem,
-        setTotalItem,
         totalValue,
         setTotalValue
     } = useAppContext()
     const handleDelete = (id: number) => {
         setCart(cart?.filter((i: GetCartProp) => i.id !== id))
-        setTotalItem(totalItem - 1)
         var value = totalValue as number - parseFloat(item.price as string) as number
         value = parseFloat(value.toPrecision(5) as string) as number;
         setTotalValue(value)
@@ -63,7 +60,6 @@ function SingleCartItem({ item }: Props) {
                       id="cart-item-quantity"
                       value={quantity}
                       onChange={(e) => handleQuantity(e, item)}
-                      defaultValue='1'
                   >
                         <option value="1">1</option>
                         <option value="2">2</option>
