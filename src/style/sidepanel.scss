@@ -1,8 +1,36 @@
-
+@import './variable.scss';
+//Old Style
 .sidepanel-container{
     width: 25em;
     position: fixed;
     height: 100%;
     background-color: pink;
-    z-index: 100;
+    z-index: 185;
 }
+.sidepanel-bg{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 170;
+    background-color: rgba(0,0,0,0.5);
+}
+.filter-icon{
+    width: 1.5em;
+    height: 1.5em;
+    position: fixed;
+    top: 1em;
+    left: 1em;
+    color: black;
+    //transform: translateY(-50%);
+    z-index: 100;
+    font-size: 20px;
+    border-radius: 50%;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+}
+//new Style

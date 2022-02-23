@@ -1,0 +1,29 @@
+@mixin desktop-landscape-min {
+    @media all and (min-width: $bp-desktop) {
+        @content;
+    }
+}
+
+@mixin laptop-landscape-max {
+    @media all and (max-width: $bp-laptop) {
+        @content;
+    }
+}
+
+@mixin tablet-portrait-max {
+    @media all and (max-width: $bp-tablet) {
+        @content;
+    }
+}
+
+
+@mixin mobile-portrait-max {
+    @media all and (max-width: $bp-mobile) {
+        @content;
+    }
+}
+@mixin desktop-landscape-min2 {
+    @media all and (min-width: $bp-desktop2) {
+        @content;
+    }
+}

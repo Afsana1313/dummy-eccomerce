@@ -38,7 +38,6 @@ function SingleProduct(item: GetProp) {
     } finally {
       
     }
-    //cart?.length === 0 ? setCart([cartItem]) : setCart([...cart, cartItem]);
     var value = totalValue as number + parseFloat(item.price as string) as number
     value = parseFloat(value.toPrecision(4) as string) as number;
     setTotalValue(value)

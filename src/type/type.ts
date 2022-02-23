@@ -34,6 +34,9 @@ export type GetCartProp = {
     added: boolean,
     totalValue: number
 }
-type GetSearchParamProps = {
-    
+export type GetSearchParamProps = {
+    product_type: string,
+    brand?: string,
+    price_greater_than?: number,
+    price_less_than?: number
 }
