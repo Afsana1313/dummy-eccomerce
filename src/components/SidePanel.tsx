@@ -1,5 +1,5 @@
 import useAppContext from 'customehook/useAppContext'
-
+import { Slider, Switch } from 'antd';
 function SidePanel() {
   const {
     isSidePanelOpen,
@@ -14,8 +14,11 @@ function SidePanel() {
   }
   return (
     <>
-     <div className='sidepanel-container' style={style}>
-          
+      <div className='sidepanel-container' style={style}>
+        it shouwl dhso
+        <div className='price-slider'>
+            <Slider range defaultValue={[20, 50]} />
+        </div>
       </div>
       <div
         className='sidepanel-bg'

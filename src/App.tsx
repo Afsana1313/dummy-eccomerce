@@ -8,7 +8,7 @@ import { GetProp, GetCartProp, GetSearchParamProps } from 'type/type';
 import CartDisplay from 'components/CartDisplay';
 import WholeCart from 'components/WholeCart';
 import Loader from 'components/Loader';
-import SearchParam from 'components/SearchParam';
+import SearchParam from 'components/FilterIcon';
 //import useFetch from 'customehook/useFetch';
 // import apiData from './static/data'
 export const ThemeContext = createContext<any>(null);

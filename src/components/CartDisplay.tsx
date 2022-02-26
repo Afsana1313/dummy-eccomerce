@@ -1,6 +1,7 @@
-import {ShoppingCartOutlined} from '@ant-design/icons'
+//import Odometer from 'react-odometerjs';
+import { ShoppingCartOutlined } from '@ant-design/icons'
 import useAppContext from '../customehook/useAppContext'
-//import Odometerjs from 'react-odometerjs'
+
 function CartDisplay() {
   const {totalValue,
     cart,
@@ -20,7 +21,11 @@ function CartDisplay() {
                                         : ' items'}
       </div>
           <div className='cart-text'>
-                  {totalValue}  
+       {/* <Odometer
+                value={totalValue}
+                format="(.ddd),dd"
+            />   */}
+        {totalValue}
           </div>
     </div>
   )

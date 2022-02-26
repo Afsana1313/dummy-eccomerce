@@ -33,4 +33,14 @@
     align-items: center;
     background-color: aquamarine;
 }
+.price-slider{
+    width: 100%;
+    height: 100px;
+    .ant-slider, .ant-slider-rail{
+        width: 100%;
+        height: 50px;
+         z-index: 1000;
+    }
+   
+}
 //new Style
