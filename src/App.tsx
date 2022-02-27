@@ -22,9 +22,19 @@ function App() {
   const [dataLoaded, setDataLoaded] = useState(false)
   const [searchParam, setSearchParam] = useState<GetSearchParamProps>()
   //const { isLoading } = useFetch(`${baseUrl}`)
-    useEffect(() => {
-    async function CallingApi() {
-      const res = await axios.get(`${baseUrl}`)
+  useEffect(() => {
+      setSearchParam({
+        product_type: '',
+         brand: ''
+        // price_greater_than: undefined,
+        // price_less_than: undefined
+      })
+      async function CallingApi() {
+      const url = `${baseUrl}${!!searchParam?.product_type ? `product_type=${(searchParam?.product_type as string)?.toLowerCase()}` : ``}`
+          + `${!!searchParam?.brand ? `&brand=${searchParam?.brand as string}` : ``}`
+        //   + `${!!searchParam?.price_greater_than ? `&price_greater_than=${searchParam?.price_greater_than as number}` : ``}`
+        // + `${!!searchParam?.price_less_than ? `&price_less_than=${searchParam?.price_less_than as number}` : ``}`
+      const res = await axios.get(baseUrl)
       const newData = res.data.filter((i: GetProp) => i.price !== "0.0")
       
       await setData(newData)
@@ -33,8 +43,9 @@ function App() {
     //  setDataLoaded(isLoading)
     }
     //setData(apiData.json())
-    CallingApi();
-  }, [])
+      CallingApi();
+      
+  }, [searchParam])
   //setDataLoaded(isLoading);
   const value = {
     data,

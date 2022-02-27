@@ -2,7 +2,9 @@ import { ThemeContext } from "../App";
 import { useContext } from "react";
 function useAppContext() {
     const {
-    cart,    
+        cart,
+        searchParam,
+    setSearchParam,
     data,
     setData,
     setCart,
@@ -14,7 +16,9 @@ function useAppContext() {
     setTotalValue
     } = useContext(ThemeContext)
     return {
-    data,
+        data,
+        searchParam,
+        setSearchParam,
     setData,
     cart,
     setCart,
