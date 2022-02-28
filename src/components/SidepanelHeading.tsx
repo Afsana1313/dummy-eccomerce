@@ -1,6 +1,7 @@
 function SidepanelHeading({title}: any) {
   return (
-    <div className="sidepanel-heading">{title}</div>
+    <div className="sidepanel-heading">
+      <span>{title}</span></div>
   )
 }
 

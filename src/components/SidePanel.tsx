@@ -1,5 +1,5 @@
 import useAppContext from 'customehook/useAppContext'
-
+import ParamInput from './ParamInput';
 import PriceSlider from './PriceSlider';
 function SidePanel() {
   const {
@@ -17,7 +17,14 @@ function SidePanel() {
     <>
       <div className='sidepanel-container' style={style}>
         <PriceSlider/>
-
+        <ParamInput
+          title='Filter By Product Type'
+          type='productType'
+        />
+        <ParamInput
+          title='Filter By Brand'
+          type='brand'
+        />
       </div>
       <div
         className='sidepanel-bg'

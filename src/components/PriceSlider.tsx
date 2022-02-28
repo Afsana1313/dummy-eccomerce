@@ -1,6 +1,7 @@
 import { Slider } from 'antd';
 import SidepanelHeading from './SidepanelHeading'
 import useAppContext from 'customehook/useAppContext';
+
 function formatter(value: number | undefined) {
   return `$${value}`;
 }
@@ -14,21 +15,20 @@ const {setSearchParam,searchParam} = useAppContext()
         <div className='price-slider'>
             
               <Slider
-                  range
+                  range={{ draggableTrack: true }}
                   defaultValue={[5, 450]}
                   disabled={false}
-                  dots={true}
-                  min={1}
-                  max={4500}
+                  min={5}
+                  max={450}
                   tooltipVisible
-                //   onAfterChange={(val) => setSearchParam({
-                //       ...searchParam,
-                //       price_greater_than: val[0],
-                //       price_less_than: val[1]
-                //   })}
-                  tooltipPlacement={'bottom'}
-                  tipFormatter={formatter}
-              />
+                   onAfterChange={(val:any) => setSearchParam({
+                       ...searchParam,
+                       price_greater_than: val[0],
+                       price_less_than: val[1]
+                   })}
+        />
+        {/* <span>{searchParam?.price_greater_than}</span>
+         <span>{ searchParam?.price_less_than}</span> */}
         </div>
     </div>
   )

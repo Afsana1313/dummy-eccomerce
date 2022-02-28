@@ -16,7 +16,7 @@ function CartDisplay() {
             <ShoppingCartOutlined />
       </div>
       <div className='cart-item-number'>
-        {!!cart?.length && cart?.length}{!!cart  || cart?.length === 0 ? 'No Item' 
+        {!!cart?.length && cart?.length}{(cart === undefined  || cart?.length === 0) ? 'No Item' 
                                         : cart?.length === 1 ? ' item'
                                         : ' items'}
       </div>
@@ -25,7 +25,7 @@ function CartDisplay() {
                 value={totalValue}
                 format="(.ddd),dd"
             />   */}
-        {totalValue}
+        $ {totalValue}
           </div>
     </div>
   )
