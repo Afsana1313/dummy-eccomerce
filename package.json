@@ -1,6 +1,6 @@
 
 {
-  "homepage": "https://afsana1313.github.io/dummy-eccomerce/",
+  "homepage": "https://afsana1313.github.io/dummy-eccomerce",
   "typings": "./dist/index.d.ts",
   "name": "makeup",
   "version": "0.1.0",
