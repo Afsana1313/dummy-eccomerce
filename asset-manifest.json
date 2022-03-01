@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dummy-eccomerce/static/css/main.bf57c18f.css",
+    "main.js": "/dummy-eccomerce/static/js/main.d6f82665.js",
+    "static/js/787.1e693262.chunk.js": "/dummy-eccomerce/static/js/787.1e693262.chunk.js",
+    "index.html": "/dummy-eccomerce/index.html",
+    "main.bf57c18f.css.map": "/dummy-eccomerce/static/css/main.bf57c18f.css.map",
+    "main.d6f82665.js.map": "/dummy-eccomerce/static/js/main.d6f82665.js.map",
+    "787.1e693262.chunk.js.map": "/dummy-eccomerce/static/js/787.1e693262.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bf57c18f.css",
+    "static/js/main.d6f82665.js"
+  ]
+}
