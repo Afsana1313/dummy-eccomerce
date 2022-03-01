@@ -1,4 +1,4 @@
-{ "homepage" : "https://number-matching-game.netlify.app/".
+{ "homepage" : "https://number-matching-game.netlify.app/",
   "typings": "./dist/index.d.ts",
   "name": "makeup",
   "version": "0.1.0",
