@@ -1,4 +1,4 @@
-{
+{ "homepage" : "https://number-matching-game.netlify.app/".
   "typings": "./dist/index.d.ts",
   "name": "makeup",
   "version": "0.1.0",
@@ -30,6 +30,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
