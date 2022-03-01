@@ -15,13 +15,13 @@ function SingleProduct(item: GetProp) {
   useEffect(() => {
     !!cart?.find((i: GetCartProp) => i.id === item.id) ? setIsInCart(true) : setIsInCart(false)
    // console.log(cart)
-  }, [cart])
-  const [loaderVisible, setLoaderVisible] = useState(false)
+  }, [cart, item.id])
+ // const [loaderVisible, setLoaderVisible] = useState(false)
   const [isInCart, setIsInCart] = useState(false)
   const btnText = isInCart ? 'VIEW CART' : 'ADD TO CART'
   let iconStyle = {
     marginRight: '10px',
-    display: loaderVisible ? 'inline-block' : 'none'
+   // display: loaderVisible ? 'inline-block' : 'none'
   }
   const handleAddToCart = (item: GetProp) => {
     const cartItem = {
@@ -60,10 +60,10 @@ function SingleProduct(item: GetProp) {
         className='cart-btn'
         onClick={(e)=>  isInCart ? setCartOpen(true) : handleAddToCart(item)}
       >
-         <LoadingOutlined
+         {/* <LoadingOutlined
           style={iconStyle}
           className='cart-loader-icon'
-        /> 
+        />  */}
         {btnText}</button>
          
     </div>

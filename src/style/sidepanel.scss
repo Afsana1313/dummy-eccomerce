@@ -34,12 +34,12 @@
     //transform: translateY(-50%);
     z-index: 100;
     font-size: 20px;
-    border-radius: 50%;
-    border: 2px solid black;
+    //border-radius: 50%;
+    //border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aquamarine;
+    color: black;
 }
 .price-slider{
     width: auto;
@@ -68,5 +68,13 @@
     text-align: left;
     padding-left: 15px;
     color: #262626;
+}
+select{
+    width: 100%;
+    margin: 20px 0;
+    padding: 10px ;
+    border-radius: 5px;
+    font-size: 20px;
+    border: 2px solid rgb(214, 25, 73);
 }
 //new Style

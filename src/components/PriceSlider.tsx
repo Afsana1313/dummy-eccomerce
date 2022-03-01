@@ -2,13 +2,10 @@ import { Slider } from 'antd';
 import SidepanelHeading from './SidepanelHeading'
 import useAppContext from 'customehook/useAppContext';
 
-function formatter(value: number | undefined) {
-  return `$${value}`;
-}
 function PriceSlider() {
 const {setSearchParam,searchParam} = useAppContext()    
   return (
-      <div>
+      <div>{console.log('sidepanel')}
           <SidepanelHeading
             title={'Filter by price'}
           /> 
@@ -16,10 +13,10 @@ const {setSearchParam,searchParam} = useAppContext()
             
               <Slider
                   range={{ draggableTrack: true }}
-                  defaultValue={[5, 450]}
+                  defaultValue={[5, 100]}
                   disabled={false}
                   min={5}
-                  max={450}
+                  max={100}
                   tooltipVisible
                    onAfterChange={(val:any) => setSearchParam({
                        ...searchParam,

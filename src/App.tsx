@@ -32,11 +32,11 @@ function App() {
   const [searchParam, setSearchParam] = useState<GetSearchParamProps>({
     product_type: '',
     brand: '',
-    price_greater_than: 0,
-    price_less_than: 450
+    price_greater_than: 0 ,
+    price_less_than: 100
   })
   //const { isLoading } = useFetch(`${baseUrl}`)
-
+  
   useEffect(() => {    
       async function CallingApi() {
       const url = `${baseUrl}${!!searchParam?.product_type ? `product_type=${(searchParam?.product_type as string)?.toLowerCase()}` : ``}`
@@ -48,13 +48,14 @@ function App() {
         const newData = res.data.filter((i: GetProp) => i.price !== "0.0")
         
       
-      await setData(newData)
+    setData(newData)
       //console.log(newData)
-      await setDataLoaded(true)
-    var allBrand = getUniqueArray(data?.map((i: GetProp) => i.brand) as string[])     
-    brand.current = allBrand;
-    var allProductType = getUniqueArray(data?.map((i: GetProp) => i.product_type) as string[])     
-    productType.current = allProductType;
+      setDataLoaded(true)
+        if (!!productType.current) {     
+      brand.current = getUniqueArray(data?.map((i: GetProp) => i.brand) as string[]);
+          productType.current = getUniqueArray(data?.map((i: GetProp) => i.product_type) as string[]);
+          console.log(brand.current, productType.current)
+    }
     }
    
       CallingApi();
@@ -79,8 +80,10 @@ function App() {
     setTotalValue
   }
   const titleStyle = {
-    margin: '50px 0',
-    marginBottom: '100px'
+    padding: '50px 0',
+    margin: '0',
+    marginBottom: '100px',
+    backgroundColor: '#f2f2f2'
   }
   return (
     <ThemeContext.Provider value={value}>

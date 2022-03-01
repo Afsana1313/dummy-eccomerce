@@ -16,7 +16,7 @@ function ProductContainer() {
                     name={i.name}
                     brand={i.brand}
                     price={i.price}
-                    price_sign={i.price_sign}
+                    price_sign={i.price_sign || '$'}
                     image_link = {i.image_link}
                     product_link = {i.product_link}
                     rating={i.rating}

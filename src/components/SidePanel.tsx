@@ -16,6 +16,7 @@ function SidePanel() {
   return (
     <>
       <div className='sidepanel-container' style={style}>
+        
         <PriceSlider/>
         <ParamInput
           title='Filter By Product Type'
