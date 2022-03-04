@@ -58,7 +58,8 @@ function SingleProduct(item: GetProp) {
       </div>
       <button
         className='cart-btn'
-        onClick={(e)=>  isInCart ? setCartOpen(true) : handleAddToCart(item)}
+        onClick={(e) => isInCart ? setCartOpen(true) : handleAddToCart(item)}
+        style={{backgroundColor: isInCart ? '#c0adf0' : ''}}
       >
          {/* <LoadingOutlined
           style={iconStyle}

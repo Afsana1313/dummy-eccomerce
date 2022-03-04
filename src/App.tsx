@@ -53,7 +53,8 @@ function App() {
           price_sign: i.price_sign
         }
         return newObj;
-      })
+      }).filter((i)=> i.price !== "0.0")
+
      // console.log(localData)
       setData(localData)
       setDataLoaded(true)
