@@ -14,7 +14,7 @@ function SingleCartItem({ item }: Props) {
     } = useAppContext()
     const handleDelete = (id: number) => {
         setCart(cart?.filter((i: GetCartProp) => i.id !== id))
-        var value = totalValue as number - parseFloat(item.price as string) as number
+        var value = totalValue as number - (parseFloat(item.price as string) as number) * item.quantity;
         value = parseFloat(value.toPrecision(5) as string) as number;
         setTotalValue(value)
     }
