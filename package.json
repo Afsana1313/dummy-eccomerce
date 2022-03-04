@@ -20,7 +20,6 @@
     "node-sass": "^7.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-odometerjs": "^2.1.2",
     "react-rangeslider": "^2.2.0",
     "react-rating-stars-component": "^2.2.0",
     "react-scripts": "5.0.0",
