@@ -1,7 +1,7 @@
 import './App.scss';
 import {useState, createContext, useEffect, useRef} from 'react'
-import { baseUrl } from 'static/baseUrl';
-import axios from 'axios';
+//import { baseUrl } from 'static/baseUrl';
+//import axios from 'axios';
 import ProductContainer from 'components/ProductContainer';
 import SidePanel from 'components/SidePanel';
 import { GetProp, GetCartProp, GetSearchParamProps } from 'type/type';
@@ -11,7 +11,7 @@ import Loader from 'components/Loader';
 import FilterIcon from 'components/FilterIcon';
 //import SearchParam from 'components/FilterIcon';
 //import useFetch from 'customehook/useFetch';
-// import apiData from './static/data'
+import {apiData} from 'static/data'
 export const ThemeContext = createContext<any>(null);
 function getUniqueArray(_array: string[])
 {
@@ -35,32 +35,58 @@ function App() {
     price_greater_than: 0 ,
     price_less_than: 100
   })
+  //Data Loading from files -start
+  useEffect(() => {
+    async function dataLoading() {
+      const localData = apiData.map((i: any) => {
+        const newObj = {
+          name: i.name,
+          id: i.id,
+          brand: i.brand,
+          price: i.price,
+          image_link: i.image_link,
+          product_link: i.product_link,
+          rating: i.rating,
+          product_type: i.product_type,
+          product_api_link: i.product_api_link,
+          api_featured_image: i.api_featured_image,
+          price_sign: i.price_sign
+        }
+        return newObj;
+      })
+     // console.log(localData)
+      setData(localData)
+      setDataLoaded(true)
+    }
+    dataLoading();
+  },[])
+  //Data Loading from files  - end
   //const { isLoading } = useFetch(`${baseUrl}`)
   
-  useEffect(() => {    
-      async function CallingApi() {
-      const url = `${baseUrl}${!!searchParam?.product_type ? `product_type=${(searchParam?.product_type as string)?.toLowerCase()}` : ``}`
-          + `${!!searchParam?.brand ? `&brand=${searchParam?.brand as string}` : ``}`
-           + `${!!searchParam?.price_greater_than ? `&price_greater_than=${searchParam?.price_greater_than as number}` : ``}`
-          + `${!!searchParam?.price_less_than ? `&price_less_than=${searchParam?.price_less_than as number}` : ``}`
-        console.log(url)
-        const res = await axios.get(url)
-        const newData = res.data.filter((i: GetProp) => i.price !== "0.0")
+  // useEffect(() => {    
+  //     async function CallingApi() {
+  //     const url = `${baseUrl}${!!searchParam?.product_type ? `product_type=${(searchParam?.product_type as string)?.toLowerCase()}` : ``}`
+  //         + `${!!searchParam?.brand ? `&brand=${searchParam?.brand as string}` : ``}`
+  //          + `${!!searchParam?.price_greater_than ? `&price_greater_than=${searchParam?.price_greater_than as number}` : ``}`
+  //         + `${!!searchParam?.price_less_than ? `&price_less_than=${searchParam?.price_less_than as number}` : ``}`
+  //       console.log(url)
+  //       const res = await axios.get(url)
+  //       const newData = res.data.filter((i: GetProp) => i.price !== "0.0")
         
       
-    setData(newData)
-      //console.log(newData)
-      setDataLoaded(true)
-        if (!!productType.current) {     
-      brand.current = getUniqueArray(data?.map((i: GetProp) => i.brand) as string[]);
-          productType.current = getUniqueArray(data?.map((i: GetProp) => i.product_type) as string[]);
-          console.log(brand.current, productType.current)
-    }
-    }
+  //   setData(newData)
+  //     //console.log(newData)
+  //     setDataLoaded(true)
+  //       if (!!productType.current) {     
+  //     brand.current = getUniqueArray(data?.map((i: GetProp) => i.brand) as string[]);
+  //         productType.current = getUniqueArray(data?.map((i: GetProp) => i.product_type) as string[]);
+  //         console.log(brand.current, productType.current)
+  //   }
+  //   }
    
-      CallingApi();
+  //     CallingApi();
       
-  }, [searchParam])
+  // }, [searchParam])
   
   //setDataLoaded(isLoading);
   const value = {

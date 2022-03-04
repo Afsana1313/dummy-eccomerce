@@ -23,7 +23,7 @@ function ProductContainer() {
                     product_type= {i.product_type}
                     product_api_link={i.product_api_link}
                     api_featured_image={i.api_featured_image}
-                    product_colours={i.product_colours}
+                   
 
                     />
                 ))}
