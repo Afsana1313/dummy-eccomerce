@@ -5,7 +5,7 @@ function CartFooter() {
       <div className='cart-footer'>
           <div className='cart-footer-text'>
               Cart Total: <br />
-              <span>{ totalValue}</span>
+              <span>{`$ `+totalValue}</span>
           </div>
           <div className='cart-footer-btn'>
               <button>Proceed</button>

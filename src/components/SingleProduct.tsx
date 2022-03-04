@@ -54,7 +54,7 @@ function SingleProduct(item: GetProp) {
       <div className='single-product-text'>
           <span>{ item.name}</span>
           <span><span>{ item.price_sign}</span>{ item.price}</span>
-        <span>{item.rating}</span>
+        {/* <span>{item.rating}</span> */}
       </div>
       <button
         className='cart-btn'
