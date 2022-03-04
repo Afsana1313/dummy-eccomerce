@@ -1,3 +1,5 @@
+@import './variable.scss';
+@import './mixin.scss';
 .cart-display{
     width: 100px;
     height: 100px;
@@ -15,6 +17,9 @@
     border-radius: 10px 0 0 10px;
     border: 2px solid red;
     transform: translateY(-50%);
+      @include mobile-portrait-max{
+width: 110px;
+  }
 }
 .cart-item-number{
     width: 100%;
@@ -72,9 +77,14 @@
     width: 100%;
    
     .mini-cart-product-container{
+        overflow-x: hidden;
         overflow-y: scroll;
         height: 100%;
-         padding-bottom: 450px;
+        padding-bottom: 450px;
+        @include mobile-portrait-max{
+        margin: 0 10px;
+
+  }
     }
 }
 .single-product-text{
@@ -111,6 +121,7 @@
       flex-direction: column;
       height: 100px;
   }
+    
   
 }
 .cart-item-quantity select{
@@ -151,4 +162,7 @@
     margin: 5px;
     margin-bottom: 10px;
     padding: 5px;
+    &:last-child{
+        margin-bottom: 200px;
+    }
 }
