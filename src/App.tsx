@@ -118,7 +118,7 @@ function App() {
       <div className="App">
         {/* <SearchParam /> */}
         <h2 style={ titleStyle}>Makeup Balcony</h2>
-         <FilterIcon/> 
+         {/* <FilterIcon/>  */}
             <SidePanel />
             {dataLoaded ? <ProductContainer/> : <Loader />}
           <CartDisplay />
